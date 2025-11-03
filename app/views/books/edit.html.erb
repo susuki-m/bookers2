@@ -1,0 +1,25 @@
+<p id="notice"></p>
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
+  		<h1>Editing Book</h1>
+    	
+  		<form action="/bookers2/books/4709" accept-charset="UTF-8" method="post"><input type="hidden" name="_method" value="patch" autocomplete="off"><input type="hidden" name="authenticity_token" value="C_7Z9thU6MHApRHdpHOWyxIipT13qzzFfqs5xlz1zVteBlsn3lmOzdSu3eYQJMlzAGSibRTwAfC5Qkz-PuSQAw" autocomplete="off">
+        <%= form_for @book do |f| %> 
+          <div class="form-group">
+            <%= f.label :title, "Title" %>
+            <%= f.text_field :title, class: "form-control book_title" %>
+          </div>
+          <div class="form-group">
+            <%= f.label :body, "Opinion" %>
+            <%= f.text_area :body, class: "form-control book_body" %>
+          </div>
+          <%= f.submit "Update Book", class: "btn btn-success" %>
+        <% end %>
+  
+      </form>
+      <%= link_to "Show", book_path(@book.id) %>
+      <%= link_to "Back", books_path %>
+    </div>
+  </div>
+</div>
