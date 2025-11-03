@@ -1,15 +1,23 @@
-<div>
 
-  <%= image_tag @book.user.get_profile_image(100,100) %></p>
-  <%= @book.user.name %>
-  <%= @book.title %>
-  <%= @book.body %></p>
+<%= render 'list', books: @books %>
 
-  <% if @book.user == current_user %>
-    <%= link_to "edit", edit_book_path(@book.id) %>
-    <%= link_to "削除", book_path(@book), method: :delete %>
-  <% end %>
-
+<div class="col-md-8 offset-md-1">
+  <h2>Book detail</h2>
+  <table class="table">
+    <tbody>
+      <tr>
+        <td><%= image_tag @book.user.get_profile_image(100,100) %></p>
+          <%= link_to @book.user.name, user_path(@user.id) %></td>
+        <td><%= link_to @book.title, book_path(@book.id) %></td>
+        <td><%= @book.body %></p></td>
+        <% if @book.user == current_user %>
+          <td><%= link_to "Edit", edit_book_path(@book.id), class: 'btn btn-sm btn-success edit_book_4709' %></td>
+          <td><%= link_to "Destroy", book_path(@book), method: :delete, data: { confirm: '本当に消しますか？' }, class: 'btn btn-sm btn-danger destroy_book_4709' %></td>
+        <% end %>
+      </tr>
+    </tbody>
+  </table>
 </div>
+
 
 
